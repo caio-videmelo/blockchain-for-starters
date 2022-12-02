@@ -1,0 +1,28 @@
+body{
+    background-color: antiquewhite;
+    font-family: monospace;
+    text-align: center;
+}
+
+input[type="submit"]{
+    color: aquamarine;
+    background-color: black;
+    font-size: medium;
+    border-radius: 2vh;
+    padding:1vh;
+    font-weight: bolder;
+    border:5px solid white;
+    box-shadow: 3px 3px black;
+}
+
+ul{
+    list-style-type: none;
+}
+
+li{
+    border: 1px solid black;
+    padding:2vh;
+    width:50%;
+    margin-left:auto;
+    margin-right: auto;
+}
