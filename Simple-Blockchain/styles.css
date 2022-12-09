@@ -17,12 +17,13 @@ input[type="submit"]{
 
 ul{
     list-style-type: none;
+    overflow:hidden;
 }
 
 li{
     border: 1px solid black;
     padding:2vh;
-    width:50%;
+    min-width:50%;
     margin-left:auto;
     margin-right: auto;
 }

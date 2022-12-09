@@ -41,7 +41,8 @@ formElement.addEventListener("submit",function(event){
 
     let _data = event.target.data.value;
     let _prev = chain.length > 0 ? chain[chain.length-1].hash : "000000000";
-    let newBlock = new Block(blockNumber,_data,"hash",_prev);
+    let _hash = CryptoJS.SHA256(_data);
+    let newBlock = new Block(blockNumber,_data,_hash,_prev);
 
     blockNumber++;
 
@@ -82,9 +83,7 @@ formElement.addEventListener("submit",function(event){
 
 
 
-
-
-console.log(CryptoJS);
+//console.log(hash.toString(CryptoJS.enc.Base64));
 
 console.log('debug');
 
