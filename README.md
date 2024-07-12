@@ -32,9 +32,11 @@ The indexV2.html file provides the structure and layout of the web application. 
 
 HTML Structure:
 
-A header (Blockchain Demo) to display the title of the application.
-A button (<button id="generateBlockBtn">Generate Block</button>) to trigger the creation of new blocks.
-A div (<div id="blockchainDisplay"></div>) to display the blockchain structure.
+  A header (Blockchain Demo) to display the title of the application.
+
+  A button (<button id="generateBlockBtn">Generate Block</button>) to trigger the creation of new blocks.
+
+  A div (<div id="blockchainDisplay"></div>) to display the blockchain structure.
 
 Script and CSS:
 
