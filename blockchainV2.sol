@@ -1,64 +1,65 @@
-// SPDX-License-Identifier: MIT
-pragma solidity ^0.8.0;
-contract Blockchain {
-    struct Block {
-        uint index;
-        uint timestamp;
-        string data;
-        bytes32 previousHash;
-        bytes32 hash;
+class Block {
+    constructor(index, timestamp, data, previousHash = '') {
+        this.index = index;
+        this.timestamp = timestamp;
+        this.data = data;
+        this.previousHash = previousHash;
+        this.hash = this.calculateHash();
     }
-    
-    Block[] public blockchain;
-    uint public chainLength;
-    
-    constructor() {
-        createGenesisBlock();
+
+    calculateHash() {
+        return CryptoJS.SHA256(this.index + this.timestamp + JSON.stringify(this.data) + this.previousHash).toString();
     }
-    
-    function createGenesisBlock()
-private {
-        Block memory genesisBlock = Block({
-            index: 0,
-            timestamp:
-block.timestamp,
-            data: "Genesis Block",
-            previousHash: 0x0,
-            hash: calculateHash(0, block.timestamp, "Genesis Block", 0x0)
-        });
-blockchain.push(genesisBlock);
-        chainLength++;
-} 
-    function addBlock(string memory data) public {
-        Block memory previousBlock = blockchain[blockchain.length - 1];
-        Block memory newBlock = Block({
-            index:
-previousBlock.index + 1,
-            timestamp:
-block.timestamp,
-            data: data,
-            previousHash:
-previousBlock.hash,
-            hash:
-calculateHash(previousBlock.index + 1, block.timestamp, data, previousBlock.hash)
-        });
-        blockchain.push(newBlock);
-        chainLength++;
-    } 
-function calculateHash(uint index, uint timestamp, string memory data, bytes32 previousHash)
-private pure returns (bytes32) {
-    return
-keccak256(abi.encodePacked(index, timestamp, data, previousHash));
-} 
-function getBlock(uint index) public view returns (uint, uint, string memory, bytes32, bytes32) { 
-    Block memory blockData = blockchain[index];
-    return (blockData.index,
-            blockData.timestamp,
-            blockData.data,
-            blockData.previousHash,
-            blockData.hash);
-    } 
-    function getBlockchain() public view returns (Block[] memory) { 
-        return blockchain; 
-    } 
 }
+
+class Blockchain {
+    constructor() {
+        this.chain = [this.createGenesisBlock()];
+    }
+
+    createGenesisBlock() {
+        return new Block(0, new Date().toISOString(), "Genesis Block", "0");
+    }
+
+    getLatestBlock() {
+        return this.chain[this.chain.length - 1];
+    }
+
+    addBlock(newBlock) {
+        newBlock.previousHash = this.getLatestBlock().hash;
+        newBlock.hash = newBlock.calculateHash();
+        this.chain.push(newBlock);
+    }
+}
+
+const myBlockchain = new Blockchain();
+
+document.getElementById('generateBlockBtn').addEventListener('click', () => {
+    const newBlock = new Block(
+        myBlockchain.chain.length,
+        new Date().toISOString(),
+        { info: "Some transaction data" }
+    );
+    myBlockchain.addBlock(newBlock);
+    displayBlockchain();
+});
+
+function displayBlockchain() {
+    const displayElement = document.getElementById('blockchainDisplay');
+    displayElement.innerHTML = '';
+    myBlockchain.chain.forEach(block => {
+        const blockElement = document.createElement('div');
+        blockElement.classList.add('block');
+        blockElement.innerHTML = `
+            <p><strong>Index:</strong> ${block.index}</p>
+            <p><strong>Timestamp:</strong> ${block.timestamp}</p>
+            <p><strong>Data:</strong> ${JSON.stringify(block.data)}</p>
+            <p><strong>Previous Hash:</strong> ${block.previousHash}</p>
+            <p><strong>Hash:</strong> ${block.hash}</p>
+        `;
+        displayElement.appendChild(blockElement);
+    });
+}
+
+// Load the initial state of the blockchain
+displayBlockchain();
