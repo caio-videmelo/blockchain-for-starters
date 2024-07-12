@@ -1,5 +1,5 @@
 # Blockchain-for-starters
-Learn to build a blockchain from scratch
+Learning proccess to build a blockchain from scratch
 
 ## Concepts
 
@@ -14,8 +14,3 @@ Learn to build a blockchain from scratch
 - Frontend for blockchain
 - Frontend for cryptocurrency
 - Deployment
-- 
-
-## Required installations
-
-## Important Links
