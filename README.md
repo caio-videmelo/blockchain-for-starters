@@ -1,8 +1,8 @@
-<h1>Blockchain Application:<h1>
+<h1>Blockchain Application:</h1>
 
 This project is a simple blockchain simulation implemented using HTML, CSS, and JavaScript. The application allows users to generate blocks and visualize the blockchain structure dynamically in a web browser.
 
-<h1>Files Overview:<h1>
+<h1>Files Overview:</h1>
 
 a. blockchainSimulator.js
 The blockchainSimulator.js file contains the core logic for the blockchain simulation. It defines the Block and Blockchain classes and manages the process of adding new blocks to the blockchain.
@@ -54,11 +54,11 @@ Block Display:
 
 Styles the individual blocks in the blockchain display, providing clear separation and readability.
 
-<h1>How to Use:<h1>
+<h1>How to Use:</h1>
 
 To use this blockchain application, follow these steps:
 
-<h1>Clone the Repository:<h1>
+<h1>Clone the Repository:</h1>
 
 Clone the repository to your local machine using:
 git clone <repository_url>
@@ -67,16 +67,16 @@ git clone <repository_url>
 
 Open the indexV2.html file using a local server (such as Live Server in Visual Studio Code) to ensure all scripts and styles load correctly.
 
-<h1>Generate Blocks:<h1>
+<h1>Generate Blocks:</h1>
 
 Click the "Generate Block" button to create and add new blocks to the blockchain. The blockchain structure will be displayed below the button.
 
-<h1>Requirements:<h1>
+<h1>Requirements:</h1>
 
 Web Browser: A modern web browser (e.g., Chrome, Firefox, Edge) is required to run the application.
 Local Server: Use a local server to open the indexV2.html file for proper loading of scripts and styles.
 
-<h1>Acknowledgments:<h1>
+<h1>Acknowledgments:</h1>
 
 This project uses the CryptoJS library for hashing.
 Feel free to contribute to this project by submitting pull requests or opening issues.
