@@ -4,8 +4,8 @@ This project is a simple blockchain simulation implemented using HTML, CSS, and 
 
 <h1>Files Overview:</h1>
 
-a. blockchain.js
-The blockchain.js file contains the core logic for the blockchain simulation. It defines the Block and Blockchain classes and manages the process of adding new blocks to the blockchain.
+a. blockchainSimulator.js
+The blockchainSimulator.js file contains the core logic for the blockchain simulation. It defines the Block and Blockchain classes and manages the process of adding new blocks to the blockchain.
 
 Block Class:
 
@@ -44,8 +44,8 @@ Links to the styles.css file for styling.
 Includes the CryptoJS library for hashing.
 Links to the blockchain.js file for the blockchain logic.
 
-c. styles.css
-The styles.css file contains the styles for the web application, ensuring it is visually appealing and user-friendly.
+c. stylesV4.css
+The stylesV4.css file contains the styles for the web application, ensuring it is visually appealing and user-friendly.
 
 <h1>How to Use:</h1>
 
