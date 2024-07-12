@@ -36,7 +36,7 @@ HTML Structure:
 
   A button (<button id="generateBlockBtn">Generate Block</button>) to trigger the creation of new blocks.
 
-  A div (<div id="blockchainDisplay"></div>) to display the blockchain structure.
+  A div (id="blockchainDisplay") to display the blockchain structure.
 
 Script and CSS:
 
