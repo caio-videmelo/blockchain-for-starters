@@ -8,7 +8,7 @@ class Block {
     }
 
     calculateHash() {
-        return CryptoJS.SHA256(this.index + this.timestamp + JSON.stringify(this.data) + this.previousHash).toString();
+        return CryptoJS.SHA256(this.index + this.timestamp + this.data + this.previousHash).toString();
     }
 }
 
@@ -38,7 +38,7 @@ document.getElementById('generateBlockBtn').addEventListener('click', () => {
     const newBlock = new Block(
         myBlockchain.chain.length,
         new Date().toISOString(),
-        { info: "Some transaction data" }
+        "Some transaction data"
     );
     myBlockchain.addBlock(newBlock);
     displayBlockchain();
@@ -46,14 +46,14 @@ document.getElementById('generateBlockBtn').addEventListener('click', () => {
 
 function displayBlockchain() {
     const displayElement = document.getElementById('blockchainDisplay');
-    displayElement.innerHTML = '';
+    displayElement.innerHTML = ''; // Clear previous content
     myBlockchain.chain.forEach(block => {
         const blockElement = document.createElement('div');
         blockElement.classList.add('block');
         blockElement.innerHTML = `
             <p><strong>Index:</strong> ${block.index}</p>
             <p><strong>Timestamp:</strong> ${block.timestamp}</p>
-            <p><strong>Data:</strong> ${JSON.stringify(block.data)}</p>
+            <p><strong>Data:</strong> ${block.data}</p>
             <p><strong>Previous Hash:</strong> ${block.previousHash}</p>
             <p><strong>Hash:</strong> ${block.hash}</p>
         `;
