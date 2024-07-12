@@ -1,94 +1,88 @@
-const CryptoJS = require('crypto-js');
+'use strict';
 
-class Transaction {
-    constructor(sender, receiver, amount) {
-        this.sender = sender;
-        this.receiver = receiver;
-        this.amount = amount;
+// Requirements
+// 1. Create a block that can take number, data, hash and previous hash
+// 2. Link the blocks using the previous hashes
+// 3. Enter new block everytime you enter new data
+
+// Chain
+let chain = [];
+let blockNumber = 1;
+
+// Block
+class Block{
+
+    constructor(number,data,hash,prevhash="000000"){
+
+        this.number = number;
+        this.data = data;
+        this.hash = hash;
+        this.previousHash = prevhash;
+
     }
 
-    toString() {
-        return JSON.stringify(this);
+    previoushash(_prevHash){
+        return _prevHash;
     }
+
+
 }
 
-class Block {
-    constructor(index, timestamp, transactions, previousHash = '') {
-        this.index = index;
-        this.timestamp = timestamp;
-        this.transactions = transactions;
-        this.previousHash = previousHash;
-        this.hash = this.calculateHash();
-    }
+const formElement = document.getElementById("formID");
+const listsElement = document.getElementById("card");
 
-    calculateHash() {
-        return CryptoJS.SHA256(this.index + this.timestamp + JSON.stringify(this.transactions) + this.previousHash).toString();
-    }
-}
 
-class Blockchain {
-    constructor() {
-        this.chain = [this.createGenesisBlock()];
-        this.pendingTransactions = [];
-        this.miningReward = 100; // Reward for mining a new block (in a real scenario, this would be dynamic)
-    }
 
-    createGenesisBlock() {
-        return new Block(0, new Date().toISOString(), [], "0");
-    }
 
-    getLatestBlock() {
-        return this.chain[this.chain.length - 1];
-    }
+    // data submission logic
+formElement.addEventListener("submit",function(event){
+    event.preventDefault();
 
-    minePendingTransactions(miningRewardAddress) {
-        const newBlock = new Block(
-            this.chain.length,
-            new Date().toISOString(),
-            this.pendingTransactions,
-            this.getLatestBlock().hash
-        );
-        this.chain.push(newBlock);
 
-        console.log("Block successfully mined!");
-        console.log("Hash: " + newBlock.hash);
-        
-        // Reward for mining
-        this.pendingTransactions = [
-            new Transaction(null, miningRewardAddress, this.miningReward)
-        ];
-    }
+    let _data = event.target.data.value;
+    let _prev = chain.length > 0 ? chain[chain.length-1].hash : "000000000";
+    let _hash = CryptoJS.SHA256(_data);
+    let newBlock = new Block(blockNumber,_data,_hash,_prev);
 
-    createTransaction(transaction) {
-        this.pendingTransactions.push(transaction);
-    }
+    blockNumber++;
 
-    getBalanceOfAddress(address) {
-        let balance = 0;
+    chain.push(newBlock);
+    console.log(chain);
 
-        for (const block of this.chain) {
-            for (const trans of block.transactions) {
-                if (trans.sender === address) {
-                    balance -= trans.amount;
-                }
-                if (trans.receiver === address) {
-                    balance += trans.amount;
-                }
-            }
-        }
+    let listItem = document.createElement('li');
 
-        return balance;
-    }
-}
+    let listDivElement = document.createElement('div');
+    let h3Element = document.createElement('h3');
+    let pElement = document.createElement('p');
+    let pElementHash = document.createElement('p');
+    let pElementPrev = document.createElement('p');
 
-const myBlockchain = new Blockchain();
+    // h3 content
+    
+    h3Element.innerText = chain[chain.length-1].number;
+    listDivElement.appendChild(h3Element);
 
-// Simulate transactions
-myBlockchain.createTransaction(new Transaction('Alice', 'Bob', 50));
-myBlockchain.createTransaction(new Transaction('Bob', 'Alice', 20));
+    // p for data
+    pElement.innerHTML = chain[chain.length-1].data;
+    listDivElement.appendChild(pElement);
 
-// Mine the pending transactions
-myBlockchain.minePendingTransactions('MinerAddress');
+    // p for hash
+    pElementHash.innerHTML = chain[chain.length-1].hash;
+    listDivElement.appendChild(pElementHash);
 
-// Display the blockchain
-console.log(JSON.stringify(myBlockchain.chain, null, 4));
+    // p for previousHash
+    pElementPrev.innerHTML = chain[chain.length-1].previousHash;
+    listDivElement.appendChild(pElementPrev);
+
+
+    listItem.appendChild(listDivElement);
+    listsElement.appendChild(listItem);
+
+
+});
+
+
+
+//console.log(hash.toString(CryptoJS.enc.Base64));
+
+console.log('debug');

@@ -1,12 +1,12 @@
 /* Add your CSS styles here */
 body {
-    background-color: antiquewhite;
+    background-color: rgb(155, 72, 72);
     font-family: monospace;
     text-align: center;
 }
 
 input[type="button"] {
-    color: aquamarine;
+    color: rgb(250, 112, 19);
     background-color: black;
     font-size: medium;
     border-radius: 2vh;
