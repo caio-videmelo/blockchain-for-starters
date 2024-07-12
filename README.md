@@ -11,6 +11,7 @@ Block Class:
 
 constructor(index, timestamp, data, previousHash = ''): Initializes a new block with the given index, timestamp, data, and previous hash. It also calculates the hash for the block using the calculateHash method.
 calculateHash(): Computes the SHA256 hash of the block's index, timestamp, data, and previous hash.
+The Block class has been updated to include an array of transactions (transactions) instead of a single data field (data). The calculateHash function now incorporates these transactions in the hash calculation.
 
 Blockchain Class:
 
@@ -18,6 +19,23 @@ constructor(): Initializes the blockchain with a genesis block by calling the cr
 createGenesisBlock(): Creates the first block (genesis block) in the blockchain.
 getLatestBlock(): Returns the latest block in the blockchain.
 addBlock(newBlock): Adds a new block to the blockchain after setting its previous hash and calculating its own hash.
+The Blockchain class now maintains an array of pending transactions (pendingTransactions) that are included in new blocks when mined.
+minePendingTransactions(miningRewardAddress) simulates the process of mining new blocks, where pending transactions are grouped into a new block and added to the blockchain.
+
+<h1>Transaction Class:</h1>
+
+The Transaction class represents a transaction with sender, receiver, and amount information.
+
+Transaction Simulation:
+
+createTransaction(transaction) allows for creating new transactions and adding them to the list of pending transactions.
+After mining a block (minePendingTransactions), a reward is given to the specified miner address (miningRewardAddress).
+Balance Checking:
+
+getBalanceOfAddress(address) calculates the balance of a specific address by traversing all blocks and transactions in the blockchain.
+Execution
+This script can be run in a Node.js environment to simulate transactions and block mining. Make sure to have the CryptoJS library installed (npm install crypto-js) for the SHA256 hash to function correctly.
+Adapt this code as needed to better integrate with your existing web application, allowing user interactions to create transactions and view the blockchain's state.
 
 Event Listener:
 
