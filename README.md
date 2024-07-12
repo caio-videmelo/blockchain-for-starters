@@ -63,7 +63,7 @@ To use this blockchain application, follow these steps:
 Clone the repository to your local machine using:
 git clone <repository_url>
 
-<h1>Open the Application:<h1>
+<h1>Open the Application:</h1>
 
 Open the indexV2.html file using a local server (such as Live Server in Visual Studio Code) to ensure all scripts and styles load correctly.
 
