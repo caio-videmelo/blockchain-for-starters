@@ -1,35 +1,59 @@
-<h1>Blockchain Application:</h1>
+# Simple Blockchain in JavaScript
 
-This project is a simple blockchain simulation implemented using HTML, CSS, and JavaScript. The application allows users to generate blocks and visualize them in a web browser.
+This project implements a simple example of a blockchain using JavaScript. It includes a basic user interface for adding new blocks to the blockchain and displaying information about the created blocks.
 
-<h1>Files Overview:</h1>
+## Requirements
 
-a. blockchainSimulator.js
-The blockchainSimulator.js file contains the core logic for the blockchain simulation. It defines the Block and Blockchain classes and manages the process of adding new blocks to the blockchain.
+- Node.js (version >= 12.0.0)
+- CryptoJS (installed via npm)
 
-Block Class:
+## Installation
 
-constructor(index, timestamp, data, previousHash = ''): Initializes a new block with the given index, timestamp, data, and previous hash. It also calculates the hash for the block using the calculateHash method.
-calculateHash(): Computes the SHA256 hash of the block's index, timestamp, data, and previous hash.
+1. Clone the repository:
 
-Blockchain Class:
+   ```bash
+   git clone https://github.com/caio-videmelo/blockchain-for-starters/
+   cd repository-name
+   ```
 
-constructor(): Initializes the blockchain with a genesis block by calling the createGenesisBlock method.
-createGenesisBlock(): Creates the first block (genesis block) in the blockchain.
-getLatestBlock(): Returns the latest block in the blockchain.
-addBlock(newBlock): Adds a new block to the blockchain after setting its previous hash and calculating its own hash. 
+## Install the necessary dependencies:
 
-Balance Checking:
+````
+npm install
+````
 
-getBalanceOfAddress(address) calculates the balance of a specific address by traversing all blocks in the blockchain.
+## How to Use
 
-Execution:
+To run the code, you have two options depending on the desired environment:
 
-This script 
-can be run in a Node.js environment to simulate a blockchain. Make sure to have the CryptoJS library installed (npm install crypto-js) for the SHA256 hash to function correctly.
-Adapt this code as needed to better integrate with your existing web application, allowing user interactions to create and view the blockchain's state.
+### In the Browser
 
-b. index.html
+Open the `index.html` file in any modern web browser.
+
+Fill out the form with the desired data and submit it to add a new block to the blockchain.
+
+### In Node.js
+
+Run the JavaScript file in Node.js:
+
+````
+node blockchainSimulator.js
+````
+
+Note: This mode won't have the user interface as Node.js does not support DOM access.
+
+## Funcionalidades
+
+Adicionar Bloco: Preencha o formulário com dados e envie para adicionar um novo bloco à blockchain.
+
+Visualizar Blockchain: Cada bloco adicionado será listado com informações como número do bloco, dados, hash e hash anterior.
+
+## Project Structure
+
+blockchainSimulator.js: Implementation of the blockchain and block addition logic.
+
+index.html: User interface for adding blocks.
+
 The index.html file provides the structure and layout of the web application. It includes references to the CSS and JavaScript files and sets up the basic interface.
 
 HTML Structure:
@@ -42,34 +66,12 @@ Script and CSS:
 
 Links to the styles.css file for styling.
 Includes the CryptoJS library for hashing.
-Links to the blockchain.js file for the blockchain logic.
+Links to the blockchainSimulator.js file for the blockchain logic.
 
-c. stylesV4.css
+stylesV4.css: Styles for the user interface.
+
 The stylesV4.css file contains the styles for the web application, ensuring it is visually appealing and user-friendly.
 
-<h1>How to Use:</h1>
+## Contribution
 
-To use this blockchain application, follow these steps:
-
-<h1>Clone the Repository:</h1>
-
-Clone the repository to your local machine using:
-git clone <repository_url>
-
-<h1>Open the Application:</h1>
-
-Open the ind.html file using a local server (such as Live Server in Visual Studio Code) to ensure all scripts and styles load correctly.
-
-<h1>Generate Blocks:</h1>
-
-Click the "Generate Block" button to create and add new blocks to the blockchain. The blockchain structure will be displayed below the button.
-
-<h1>Requirements:</h1>
-
-Web Browser: A modern web browser (e.g., Chrome, Firefox, Edge) is required to run the application.
-Local Server: Use a local server to open the index.html file for proper loading of scripts and styles.
-
-<h1>Acknowledgments:</h1>
-
-This project uses the CryptoJS library for hashing.
-Feel free to contribute to this project by submitting pull requests or opening issues.
+Contributions are welcome! Feel free to send pull requests with improvements, bug fixes, or new features.
